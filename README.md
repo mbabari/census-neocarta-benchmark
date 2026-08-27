@@ -35,7 +35,19 @@ Natural language question
 
 ### Census ACS extension (benchmark & retrieval optimization)
 
-Large-schema stress test over [BigQuery public Census ACS data](https://console.cloud.google.com/marketplace/product/bigquery-public-data/census-bureau-acs) — 278 near-identical tables, Neocarta WITH vs WITHOUT comparison, and a compact-retrieval variant (~45–81% token savings).
+Large-schema stress test over [BigQuery public Census ACS data](https://console.cloud.google.com/marketplace/product/bigquery-public-data/census-bureau-acs) — 278 near-identical tables, Neocarta WITH vs WITHOUT comparison, and a compact-retrieval variant.
+
+**Results (compact retrieval, average per question):** 45–81% fewer tokens across five models, and the cheap model goes from 2/4 → 4/4 correct.
+
+![Census compact-retrieval benchmark: 45–81% fewer tokens across five models, all correct 4/4](images/census-compact-retrieval-summary.png)
+
+| Model             | Tokens w/o | Tokens with | Saving  | $/q w/o | $/q with | Correct w/o | Correct with |
+| ----------------- | ---------- | ----------- | ------- | ------- | -------- | ----------- | ------------ |
+| gpt-4o-mini       | 40,563     | 7,628       | **81%** | $0.0063 | $0.0013  | 2/4         | **4/4**      |
+| gpt-4o            | 15,414     | 6,802       | **56%** | $0.0402 | $0.0184  | 4/4         | 4/4          |
+| claude-haiku-4-5  | 24,785     | 10,677      | **57%** | $0.0287 | $0.0131  | 4/4         | 4/4          |
+| claude-sonnet-4-5 | 38,177     | 12,860      | **66%** | $0.1301 | $0.0481  | 4/4         | 4/4          |
+| claude-opus-4-5   | 34,095     | 18,796      | **45%** | $0.2035 | $0.1234  | 4/4         | 4/4          |
 
 → **[Census quickstart](module-3/CENSUS_README.md)** · [Findings](module-3/census_demo_findings.md)
 
