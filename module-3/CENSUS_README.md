@@ -140,9 +140,3 @@ table-level vector search struggles to separate them.
 Workshop originals (`3_agent.py`, Module 2 notebooks) are unchanged.
 
 ---
-
-## Security reminder
-
-- **Never commit** `.env`, API keys, or internal Slack/meeting notes.
-- `.env` is gitignored; use `.env.example` as the template only.
-- This demo reads **public** Census data; you only pay BigQuery for bytes scanned.
