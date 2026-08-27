@@ -33,6 +33,15 @@ gave up with no answer at all** (the agent kept re-scanning metadata trying to
 find the right table among 278). With Neocarta, every question was a correct,
 two-step answer (retrieve → query).
 
+The contrast is stark on a single question — *"the 10 counties with the highest
+median household income in the 2018 5-year ACS"*, same `gpt-4o-mini` both sides.
+**WITHOUT** the layer (left), the agent loops through `list_census_tables` /
+`get_table_columns`, hits the 40-step limit, and gives up with **no answer after
+66,687 tokens**. **WITH** Neocarta (right), it makes **2 tool calls, uses 21,566
+tokens (~68% fewer), and returns the correct ranked list**:
+
+![gpt-4o-mini on the Census agent: WITHOUT the semantic layer it hits the 40-step limit and gives up (66,687 tokens, no answer); WITH it, a correct answer in two tool calls (21,566 tokens)](../images/census-agent-without-vs-with.png)
+
 ### The talking point
 
 > "With a cheap model and no semantic layer, half the questions **failed** — and
